@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>me.fearmyshotz</groupId>
+  <artifactId>adventure</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>AdventureGame</name>
+  <url>https://github.com/FearMyShotz/AdventureGame</url>
+  <description>Implementationsanteil der Facharbeit von Jamil Bouafer</description>
+  <inceptionYear>2023</inceptionYear>
+
+  <properties>
+    <java.version>17</java.version>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.fullVersion>${project.version}</project.fullVersion>
+    <project.specificationVersion>SNAPSHOT</project.specificationVersion>
+  </properties>
+
+  <developers>
+    <developer>
+      <id>Fear</id>
+      <name>Jamil Bouafer</name>
+      <email>bouaferjamil@gmail.com</email>
+      <url>https://github.com/FearMyShotz</url>
+      <roles>
+        <role>developer</role>
+        <role>maintainer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <dependencies>
+    <!-- No dependencies -->
+  </dependencies>
+
+  <build>
+    <defaultGoal>clean package</defaultGoal>
+    <finalName>
+        ${project.artifactId}-${project.version}-${git.commit.id.abbrev}-${project.specificationVersion}
+    </finalName>
+    <plugins>
+
+      <plugin> <!-- Gets the git commit info -->
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
+        <version>4.9.10</version>
+        <executions>
+          <execution>
+            <id>get-the-git-infos</id>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+            <phase>initialize</phase>
+          </execution>
+        </executions>
+        <configuration>
+          <generateGitPropertiesFile>false</generateGitPropertiesFile>
+          <dateFormat>yyyy-MM-dd'T'HH:mm:ss'Z'</dateFormat>
+          <dateFormatTimeZone>UTC</dateFormatTimeZone>
+        </configuration>
+      </plugin>
+
+      <plugin> <!-- Build JAR -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+          <!--<failOnError>false</failOnError>-->
+          <archive>
+            <manifest>
+              <!-- <addClasspath>true</addClasspath>
+              <classpathPrefix>libs/</classpathPrefix> -->
+              <mainClass>
+                me.fearmyshotz.adventure.main.Main
+              </mainClass>
+            </manifest>
+            <manifestEntries>
+              <Implementation-Version>${git.commit.time}</Implementation-Version>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.10.1</version>
+        <configuration>
+          <showDeprecation>false</showDeprecation>
+          <showWarnings>false</showWarnings>
+          <!--<failOnError>false</failOnError>-->
+          <compilerArgs>
+            <arg>-parameters</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.2.1</version>
+        <configuration>
+          <!--<failOnError>false</failOnError>-->
+        </configuration>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin> <!-- Build Javadoc -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.4.1</version>
+        <configuration>
+          <!--<failOnError>false</failOnError>-->
+          <quiet>true</quiet>
+          <detectOfflineLinks>false</detectOfflineLinks>
+          <notimestamp>true</notimestamp>
+          <linksource>true</linksource>
+          <nohelp>true</nohelp>
+          <doclint>none</doclint>
+          <source>17</source>
+        </configuration>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
