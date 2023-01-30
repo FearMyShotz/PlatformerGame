@@ -40,6 +40,13 @@
   </developers>
 
   <dependencies>
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>24.0.0</version>
+    </dependency>
+  
+
     <!-- No dependencies -->
   </dependencies>
 
