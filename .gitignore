@@ -93,3 +93,4 @@ target/
 .tmp.driveupload/
 *.ignore
 *.bat
+res/wip/*

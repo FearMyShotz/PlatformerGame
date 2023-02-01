@@ -9,13 +9,12 @@ public class GameWindow {
     public GameWindow(GamePanel panel) {
         frame = new JFrame("Adventure Game");
 
-        frame.setSize(800, 600);
+        // frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        // frame.add(new GamePanel());
-        // frame.pack();
-        frame.setLocationRelativeTo(null);
         frame.add(panel);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 

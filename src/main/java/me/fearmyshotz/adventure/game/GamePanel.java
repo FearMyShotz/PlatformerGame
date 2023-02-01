@@ -1,8 +1,9 @@
 package me.fearmyshotz.adventure.game;
 
 import java.awt.Graphics;
-import java.awt.event.KeyListener;
+import java.awt.Dimension;
 import java.awt.event.FocusEvent.Cause;
+import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
 
@@ -25,11 +26,30 @@ public class GamePanel extends JPanel {
 
         this.setFocusable(true);
         this.requestFocus(Cause.ACTIVATION);
+
+        setScreenSize(1280, 800);
     }
 
     // Called every frame, clears the screen and draws the next frame
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+    }
+
+    public void setScreenSize(int width, int height) {
+        Dimension screenSize = new Dimension(width, height);
+
+        this.setPreferredSize(screenSize);
+
+        this.setMinimumSize(screenSize);
+        this.setMaximumSize(screenSize);
+    }
+
+    public KeyListener getKeyListener() {
+        return keyListener;
+    }
+
+    public DefaultMouseListener getMouseListener() {
+        return mouseListener;
     }
     
 }

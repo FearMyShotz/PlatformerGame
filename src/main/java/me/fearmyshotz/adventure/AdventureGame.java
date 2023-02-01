@@ -9,7 +9,7 @@ import me.fearmyshotz.adventure.manager.implementation.WindowManager;
  * @author Jamil B.
  */
 public class AdventureGame {
-    
+
     public static final int FRAMES_PER_SECOND = 120;
     public static final int TICKS_PER_SECOND = 200;
 
