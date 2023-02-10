@@ -93,4 +93,5 @@ target/
 .tmp.driveupload/
 *.ignore
 *.bat
+*.code-workspace
 res/wip/*
