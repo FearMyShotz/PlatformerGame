@@ -2,8 +2,8 @@ package me.fearmyshotz.adventure.model;
 
 public class ResourceKey<T extends GameAsset> {
 
-    public static final String DEFAULT_NAMESPACE = "game";
-    public static final String SEPARATOR = ":";
+    public static transient final String SEPARATOR = ":";
+    public static transient final String DEFAULT_NAMESPACE = "game" + SEPARATOR;
 
     protected T assetType;
 

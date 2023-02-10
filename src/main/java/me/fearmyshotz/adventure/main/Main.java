@@ -5,7 +5,7 @@ import me.fearmyshotz.adventure.AdventureGame;
 public class Main {
     
     public static void main(String[] args) {
-        new AdventureGame();
+        new AdventureGame(true);
     }
 
 }

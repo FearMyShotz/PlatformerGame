@@ -2,7 +2,9 @@ package me.fearmyshotz.adventure.model;
 
 import org.jetbrains.annotations.Nullable;
 
-public abstract class GameAsset {
+import me.fearmyshotz.adventure.util.Identifiable;
+
+public abstract class GameAsset implements Identifiable {
     
     protected @Nullable ResourceKey<? extends GameAsset> key;
 
@@ -10,24 +12,30 @@ public abstract class GameAsset {
     
     protected String name;
     
-    protected String description;
+    protected @Nullable String description;
     
-    public GameAsset(int id, String name, String description) {
+    public GameAsset(int id, String name, @Nullable String description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
     
+    @Override
     public int getId() {
         return id;
     }
     
+    @Override
     public String getName() {
         return name;
     }
     
-    public String getDescription() {
+    public @Nullable String getDescription() {
         return description;
+    }
+
+    public boolean hasDescription() {
+        return description != null;
     }
 
     public void setKey(ResourceKey<? extends GameAsset> key) {

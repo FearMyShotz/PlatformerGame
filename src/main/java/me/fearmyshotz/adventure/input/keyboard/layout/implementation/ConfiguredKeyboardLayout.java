@@ -33,31 +33,31 @@ public class ConfiguredKeyboardLayout extends KeyboardLayout {
 
     @Override
     public Key getLeftKey() {
-        // TODO Auto-generated method stub
+        
         return null;
     }
 
     @Override
     public Key getRightKey() {
-        // TODO Auto-generated method stub
+        
         return null;
     }
 
     @Override
     public Key getForwardKey() {
-        // TODO Auto-generated method stub
+        
         return null;
     }
 
     @Override
     public Key getJumpKey() {
-        // TODO Auto-generated method stub
+        
         return null;
     }
 
     @Override
     public Optional<Key> getAltAttackKey() {
-        // TODO Auto-generated method stub
+        
         return Optional.empty();
     }
     

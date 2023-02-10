@@ -30,6 +30,6 @@ public enum EnemyType implements EntityType, Identifiable {
 
     @Override
     public GeneralEntityType getType() {
-        return GeneralEntityType.ENEMY;
+        return GeneralEntityType.NPC;
     }
 }
