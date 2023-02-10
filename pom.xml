@@ -16,9 +16,9 @@
   <inceptionYear>2023</inceptionYear>
 
   <properties>
-    <java.version>17</java.version>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
+    <java.version>19</java.version>
+    <maven.compiler.source>19</maven.compiler.source>
+    <maven.compiler.target>19</maven.compiler.target>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -45,7 +45,7 @@
       <artifactId>annotations</artifactId>
       <version>24.0.0</version>
     </dependency>
-  
+
 
     <!-- No dependencies -->
   </dependencies>
@@ -95,6 +95,14 @@
               <Implementation-Version>${git.commit.time}</Implementation-Version>
             </manifestEntries>
           </archive>
+          <filters>
+            <filter>
+              <artifact>*:*</artifact>
+              <excludes>
+                <exclude>META-INF/</exclude>
+              </excludes>
+            </filter>
+          </filters>
         </configuration>
       </plugin>
 
@@ -141,7 +149,7 @@
           <linksource>true</linksource>
           <nohelp>true</nohelp>
           <doclint>none</doclint>
-          <source>17</source>
+          <source>19</source>
         </configuration>
         <executions>
           <execution>
