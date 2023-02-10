@@ -28,5 +28,4 @@ public class AnimationFrame {
     public void setImage(BufferedImage frameImage) {
         this.frameImage = frameImage;
     }
-
 }

@@ -5,29 +5,37 @@ import java.util.Set;
 
 import org.jetbrains.annotations.Nullable;
 
+import me.fearmyshotz.adventure.model.AssetType;
 import me.fearmyshotz.adventure.model.GameAsset;
 import me.fearmyshotz.adventure.model.ResourceKey;
+import me.fearmyshotz.adventure.model.animation.implementation.ItemAnimation;
+import me.fearmyshotz.adventure.model.animation.implementation.NPCAnimation;
+import me.fearmyshotz.adventure.model.animation.implementation.PlayerAnimation;
+import me.fearmyshotz.adventure.model.animation.implementation.TileAnimation;
 import me.fearmyshotz.adventure.model.animation.type.AnimationType;
+import me.fearmyshotz.adventure.model.entity.implementation.type.GeneralEntityType;
 import me.fearmyshotz.adventure.model.spritesheet.Spritesheet;
 import me.fearmyshotz.adventure.util.Identifiable;
 
-public class Animation extends GameAsset {
+public abstract class Animation extends GameAsset {
 
-    public static final String NAMESPACE = "game:animation";
+    public static transient final String NAMESPACE = ResourceKey.DEFAULT_NAMESPACE + "animation";
 
     private @Nullable AnimationType type;
+    private @Nullable AssetType assetType;    
 
     private Set<AnimationFrame> frames;
 
     private Spritesheet spritesheet;
 
-    public Animation(int id, String name, String description, Spritesheet spritesheet) {
-        super(id, name, description);
+    public Animation(int id, String key, String description, Spritesheet spritesheet, AnimationType type) {
+        super(id, key, description);
 
         this.spritesheet = spritesheet;
         this.frames = new HashSet<AnimationFrame>();
+        this.type = type;
 
-        setKey(new ResourceKey.Builder<Animation>(NAMESPACE, name).build());
+        setKey(new ResourceKey.Builder<Animation>(NAMESPACE, key).build());
 
         loadFrames();
     }
@@ -64,5 +72,55 @@ public class Animation extends GameAsset {
 
     public Set<AnimationFrame> getFrames() {
         return frames;
+    }
+
+    public static class Builder {
+
+        private int id;
+
+        private String key;
+
+        private String description;
+
+        private Spritesheet spritesheet;
+
+        private AnimationType type;
+
+        private GeneralEntityType entityType;
+
+        public Builder setId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setKey(String name) {
+            this.key = name;
+            return this;
+        }
+
+        public Builder setDescription(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder setSpritesheet(Spritesheet spritesheet) {
+            this.spritesheet = spritesheet;
+            return this;
+        }
+
+        public Builder setType(AnimationType type) {
+            this.type = type;
+            return this;
+        }
+
+        public Animation build() {
+            return switch (entityType) {
+                case PLAYER -> new PlayerAnimation(id, key, description, spritesheet, type);
+                case NPC -> new NPCAnimation(id, key, description, spritesheet, type);
+                case ITEM -> new ItemAnimation(id, key, description, spritesheet, type);
+                case TILE -> new TileAnimation(id, key, description, spritesheet, type);
+                default -> new Animation(id, key, description, spritesheet, type) {};
+            };
+        }
     }
 }

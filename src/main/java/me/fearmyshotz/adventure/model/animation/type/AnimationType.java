@@ -18,7 +18,6 @@ public enum AnimationType implements Identifiable {
     JUMP_LEFT(5, "Nach links springen", true, Directonal.LEFT),
     JUMP_RIGHT(6, "Nach rechts springen", true, Directonal.RIGHT),
 
-
     ATTACK(7, "Angreifen", true),
     ATTACK_LEFT(8, "Nach links angreifen", true, Directonal.LEFT),
     ATTACK_RIGHT(9, "Nach rechts angreifen", true, Directonal.RIGHT),
