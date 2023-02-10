@@ -5,7 +5,9 @@ import me.fearmyshotz.adventure.util.Identifiable;
 public enum GeneralEntityType implements Identifiable {
     
     PLAYER(0, "Spieler"),
-    ENEMY(1, "Gegner"),
+    NPC(1, "Nicht-Spieler-Charakter"),
+    ITEM(2, "Gegenstand"),
+    TILE(3, "Tile"),
     
     ;
 

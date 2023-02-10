@@ -10,23 +10,30 @@ import me.fearmyshotz.adventure.util.Pair;
 
 public class Spritesheet {
     
-    protected InputStream stream;
+    private SpritesheetType type;
 
-    protected BufferedImage spriteImage;
+    private InputStream stream;
 
-    protected BufferedImage[][] imageGrid;
+    private BufferedImage spriteImage;
 
-    protected int assetWidth;
-    protected int assetHeight;
+    private BufferedImage[][] imageGrid;
 
-    protected int gridWidth;
-    protected int gridHeight;
+    private int assetWidth;
+    private int assetHeight;
+
+    private int gridWidth;
+    private int gridHeight;
 
     public Spritesheet(String path, Pair<Integer, Integer> assetRatio) {
-        this(path, assetRatio.getLeft(), assetRatio.getRight());
+        this(null, path, assetRatio.getLeft(), assetRatio.getRight());
     }
 
-    public Spritesheet(String path, int assetWidth, int assetHeight) {
+    public Spritesheet(SpritesheetType type, String path, Pair<Integer, Integer> assetRatio) {
+        this(type, path, assetRatio.getLeft(), assetRatio.getRight());
+    }
+
+    public Spritesheet(SpritesheetType type, String path, int assetWidth, int assetHeight) {
+        this.type = type;
         this.stream = getClass().getResourceAsStream(path);
         this.assetWidth = assetWidth;
         this.assetHeight = assetHeight;
@@ -35,6 +42,12 @@ public class Spritesheet {
             this.spriteImage = ImageIO.read(stream);
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                stream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         this.gridWidth = spriteImage.getWidth() / assetWidth;
@@ -51,6 +64,10 @@ public class Spritesheet {
                 imageGrid[x][y] = spriteImage.getSubimage(x * assetWidth, y * assetHeight, assetWidth, assetHeight);
             }
         }
+    }
+
+    public SpritesheetType getType() {
+        return type;
     }
 
     public BufferedImage getSprite(int x, int y) {
