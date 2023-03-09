@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>me.fearmyshotz</groupId>
+  <groupId>adventure</groupId>
   <artifactId>adventure</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
@@ -16,9 +16,9 @@
   <inceptionYear>2023</inceptionYear>
 
   <properties>
-    <java.version>19</java.version>
-    <maven.compiler.source>19</maven.compiler.source>
-    <maven.compiler.target>19</maven.compiler.target>
+    <java.version>17</java.version>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -43,11 +43,10 @@
     <dependency>
       <groupId>org.jetbrains</groupId>
       <artifactId>annotations</artifactId>
-      <version>24.0.0</version>
+      <version>24.0.1</version>
     </dependency>
 
-
-    <!-- No dependencies -->
+    <!-- No dependencies, this project was created from scratch -->
   </dependencies>
 
   <build>
@@ -55,9 +54,15 @@
     <finalName>
         ${project.artifactId}-${project.version}-${git.commit.id.abbrev}-${project.specificationVersion}
     </finalName>
+    <resources>
+      <resource>
+        <directory>res</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
     <plugins>
 
-      <plugin> <!-- Gets the git commit info -->
+      <plugin> <!-- Fetches the git commit infos from Git -->
         <groupId>pl.project13.maven</groupId>
         <artifactId>git-commit-id-plugin</artifactId>
         <version>4.9.10</version>
@@ -88,7 +93,7 @@
               <!-- <addClasspath>true</addClasspath>
               <classpathPrefix>libs/</classpathPrefix> -->
               <mainClass>
-                me.fearmyshotz.adventure.main.Main
+                adventure.main.Main
               </mainClass>
             </manifest>
             <manifestEntries>
@@ -149,7 +154,7 @@
           <linksource>true</linksource>
           <nohelp>true</nohelp>
           <doclint>none</doclint>
-          <source>19</source>
+          <source>17</source>
         </configuration>
         <executions>
           <execution>

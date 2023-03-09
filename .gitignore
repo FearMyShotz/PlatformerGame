@@ -95,3 +95,4 @@ target/
 *.bat
 *.code-workspace
 res/wip/*
+.VSCodeCounter/
