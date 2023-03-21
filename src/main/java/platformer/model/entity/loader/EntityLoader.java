@@ -11,12 +11,29 @@ import platformer.util.Hitbox;
 import platformer.util.Location;
 import platformer.window.GameWindow;
 
+/**
+ * Ein spezialisierter {@link FileLoader}, der {@link Entity} aus einer Datei lädt.
+ * 
+ * @author Jamil B.
+ * @see FileLoader
+ */
 public class EntityLoader extends FileLoader<Entity> {
 
+    /**
+     * Erstellt einen neuen EntityLoader.
+     * 
+     * @param entities die {@link HashSet}, in der die geladenen {@link Entity} gespeichert werden.
+     * @param filePath der Pfad zur Datei, die geladen werden soll.
+     */
     public EntityLoader(HashSet<Entity> entities, String filePath) {
         super(entities, filePath);
     }
 
+    /**
+     * Lädt die {@link Entity}s aus der Datei, indem es sie liest und über die einzel Zeilen iteriert.
+     * 
+     * @return ein {@link HashSet} mit geladenen {@link Entity}s.
+     */
     @Override
     public HashSet<Entity> load() {
         int x, y;
@@ -58,5 +75,4 @@ public class EntityLoader extends FileLoader<Entity> {
 
         return new HashSet<Entity>(loadedAssets);
     }
-    
 }

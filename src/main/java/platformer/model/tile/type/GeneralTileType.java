@@ -4,6 +4,11 @@ import platformer.model.ResourceKey;
 import platformer.model.tile.Tile;
 import platformer.util.Identifiable;
 
+/**
+ * Eine Aufzählung, welche generelle mögliche Typen von Tiles enthält.
+ * 
+ * @author Jamil B.
+ */
 public enum GeneralTileType implements Identifiable {
     
     BACKGROUND(0, "Hintergrund"),

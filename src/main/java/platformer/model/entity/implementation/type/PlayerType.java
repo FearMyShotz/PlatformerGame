@@ -5,6 +5,13 @@ import platformer.model.entity.EntityType;
 import platformer.model.entity.implementation.player.Player;
 import platformer.util.Identifiable;
 
+/**
+ * Eine Aufzählung, die die verschiedenen Spielertypen enthält.
+ * 
+ * @author Jamil B.
+ * @see Identifiable
+ * @see EntityType
+ */
 public enum PlayerType implements EntityType, Identifiable {
     
     NOVICE(0, "Anfänger"),

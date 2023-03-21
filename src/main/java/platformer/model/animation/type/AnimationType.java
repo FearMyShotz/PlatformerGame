@@ -7,6 +7,12 @@ import platformer.model.ResourceKey;
 import platformer.model.animation.Animation;
 import platformer.util.Identifiable;
 
+/**
+ * Eine Aufzählung unterschiedlicher Animationstypen, die für Entities verwendet werden können.
+ * 
+ * @author Jamil B.
+ * @see Identifiable
+ */
 public enum AnimationType implements Identifiable {
 
     IDLE_LEFT(1, "Nach links sehen", Direction.LEFT),
@@ -54,10 +60,21 @@ public enum AnimationType implements Identifiable {
         return new ResourceKey.Builder<Animation>(Animation.NAMESPACE, name().toLowerCase()).build();
     }
 
+    /**
+     * Gibt die Richtung zurück, in die der Animationstyp zeigt.
+     * 
+     * @return Die Richtung, in die der Animationstyp zeigt.
+     */
     public Direction getDirection() {
         return direction;
     }
 
+    /**
+     * Gibt den Animationstyp zurück, der den angegebenen Namen enthält.
+     * 
+     * @param name Der Name, der den Animationstypen enthält.
+     * @return Der Animationstyp, der den angegebenen Namen enthält.
+     */
     public static AnimationType of(String name) {
         return Stream.of(values())
             .filter(type -> name.contains(type.name().toLowerCase()))

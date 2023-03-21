@@ -5,6 +5,13 @@ import platformer.model.tile.Tile;
 import platformer.util.Identifiable;
 import platformer.util.Pair;
 
+/**
+ * Eine Aufzählung, welche alle möglichen Typen von Tiles enthält.
+ * 
+ * @author Jamil B.
+ * @see Identifiable
+ * @see Tile
+ */
 public enum TileType implements Identifiable {
     
     AIR(00, "Luft", false, 9, 5),
@@ -28,8 +35,6 @@ public enum TileType implements Identifiable {
     DIRT_BOTTOM_SINGLE(12, "Erde (Unten, Einzeln)", true, 3, 2),
     DIRT_BOTTOM_LEFT(13, "Erde (Unten, Links)", true, 0, 2),
     DIRT_BOTTOM_RIGHT(14, "Erde (Unten, Rechts)", true, 2, 2),
-
-    // STONE(14, "Stein", true, -1, -1),
 
     LOG(15, "Baumstamm", true, 7, 0),
     LOG_SINGLE(16, "Baumstamm (Einzeln)", true, 9, 0),

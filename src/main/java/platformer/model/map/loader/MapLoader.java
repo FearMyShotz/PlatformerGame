@@ -15,10 +15,24 @@ import platformer.util.Initializable;
 import platformer.util.Location;
 import platformer.window.GameWindow;
 
+/**
+ * Ein spezialisierter {@link FileLoader}, der {@link Map}s lädt.
+ * 
+ * @author Jamil B.
+ * @see FileLoader
+ */
 public class MapLoader extends FileLoader<Map> implements Initializable<String> {
 
+    /**
+     * Die Tiles in einem zweidimensionalen Array.
+     */
     private final Tile[][] tiles;
 
+    /**
+     * Erstellt und initialisiert einen neuen MapLoader.
+     * 
+     * @param filePath der Pfad zur Datei, die geladen werden soll.
+     */
     public MapLoader(final String filePath) {
         super(new HashSet<Map>(), filePath);
 
@@ -27,11 +41,21 @@ public class MapLoader extends FileLoader<Map> implements Initializable<String> 
         initialize(filePath);
     }
 
+    /**
+     * Initialisiert diesen MapLoader.
+     * 
+     * @param mapFilePath der Pfad zur Datei, die geladen werden soll.
+     */
     @Override
     public void initialize(final String mapFilePath) {
         load();
     }
 
+    /**
+     * Lädt die Map aus der Datei.
+     * 
+     * @return die geladene Map.
+     */
     @Override
     public HashSet<Map> load() {
         int x, y;
@@ -77,6 +101,11 @@ public class MapLoader extends FileLoader<Map> implements Initializable<String> 
         return null;
     }
 
+    /**
+     * Gibt die Tiles in einem zweidimensionalen Array zurück.
+     * 
+     * @return die Tiles in einem zweidimensionalen Array.
+     */
     public Tile[][] getTiles() {
         return tiles;
     }

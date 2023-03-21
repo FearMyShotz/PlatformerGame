@@ -8,6 +8,16 @@ import java.util.Optional;
 import platformer.input.keyboard.Key;
 import platformer.input.keyboard.layout.KeyboardLayout;
 
+/**
+ * Ein Tastaturlayout, das aus einer Konfigurationsdatei gelesen wird.
+ * Es implementiert das {@link KeyboardLayout}-Interface.
+ * 
+ * Noch nicht implementiert. (Stand: 21.03.2023)
+ * 
+ * @author Jamil B.
+ * @see KeyboardLayout
+ * @see Key
+ */
 public class ConfiguredKeyboardLayout implements KeyboardLayout {
 
     private final File configFile;
@@ -21,7 +31,7 @@ public class ConfiguredKeyboardLayout implements KeyboardLayout {
             FileReader reader = new FileReader(configFile);
 
             reader.read();
-            // ! Read the file and set the keys
+            // Noch nicht implementiert
 
             reader.close();
         } catch (IOException e) {
@@ -47,7 +57,7 @@ public class ConfiguredKeyboardLayout implements KeyboardLayout {
         return null;
     }
 
-    public Key getBackwardKey() {
+    public Key getSwitchKey() {
         
         return null;
     }

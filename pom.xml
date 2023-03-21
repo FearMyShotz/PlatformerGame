@@ -80,11 +80,8 @@
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.3.0</version>
         <configuration>
-          <!--<failOnError>false</failOnError>-->
           <archive>
             <manifest>
-              <!-- <addClasspath>true</addClasspath>
-              <classpathPrefix>libs/</classpathPrefix> -->
               <mainClass>
                 platformer.main.Main
               </mainClass>
@@ -93,14 +90,6 @@
               <Implementation-Version>${git.commit.time}</Implementation-Version>
             </manifestEntries>
           </archive>
-          <!-- <filters>
-            <filter>
-              <artifact>*:*</artifact>
-              <excludes>
-                <exclude>META-INF/</exclude>
-              </excludes>
-            </filter>
-          </filters> -->
         </configuration>
       </plugin>
 
@@ -111,7 +100,6 @@
         <configuration>
           <showDeprecation>false</showDeprecation>
           <showWarnings>false</showWarnings>
-          <!--<failOnError>false</failOnError>-->
           <compilerArgs>
             <arg>-parameters</arg>
           </compilerArgs>
@@ -123,7 +111,6 @@
         <artifactId>maven-source-plugin</artifactId>
         <version>3.2.1</version>
         <configuration>
-          <!--<failOnError>false</failOnError>-->
         </configuration>
         <executions>
           <execution>
@@ -140,7 +127,6 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.4.1</version>
         <configuration>
-          <!--<failOnError>false</failOnError>-->
           <quiet>true</quiet>
           <detectOfflineLinks>false</detectOfflineLinks>
           <notimestamp>true</notimestamp>

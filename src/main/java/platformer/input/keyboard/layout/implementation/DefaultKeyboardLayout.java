@@ -6,6 +6,14 @@ import java.util.Optional;
 import platformer.input.keyboard.Key;
 import platformer.input.keyboard.layout.KeyboardLayout;
 
+/**
+ * Das standardmäßige Tastaturlayout. Es verwendet die Tasten A, D, W, S, Leertaste und Shift.
+ * Es implementiert das {@link KeyboardLayout}-Interface.
+ * 
+ * @author Jamil B.
+ * @see KeyboardLayout
+ * @see Key
+ */
 public final class DefaultKeyboardLayout implements KeyboardLayout {
 
     @Override
@@ -18,7 +26,7 @@ public final class DefaultKeyboardLayout implements KeyboardLayout {
     public Key getForwardKey() { return new Key(KeyEvent.VK_W); }
 
     @Override
-    public Key getBackwardKey() { return new Key(KeyEvent.VK_S); }
+    public Key getSwitchKey() { return new Key(KeyEvent.VK_S); }
 
     @Override
     public Key getJumpKey() { return new Key(KeyEvent.VK_SPACE); }

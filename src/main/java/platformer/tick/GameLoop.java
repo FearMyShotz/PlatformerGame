@@ -7,15 +7,39 @@ import platformer.PlatformerGame;
 import platformer.model.state.GameState;
 import platformer.window.GamePanel;
 
+/**
+ * Die GameLoop ist eine Endlosschleife, welche die Spiellogik und die
+ * Grafiklogik abarbeitet.
+ * 
+ * @author Jamil B.
+ */
 public class GameLoop implements Runnable {
 
+    /**
+     * Der Thread, in dem die GameLoop läuft.
+     */
     private final Thread gameThread;
 
+    /**
+     * Das GamePanel, in dem die GameLoop läuft.
+     */
     private final GamePanel panel;
+
+    /**
+     * Der aktive GameState.
+     */
     private GameState activeState;
 
+    /**
+     * Gibt an, ob die GameLoop läuft.
+     */
     private transient volatile boolean running;
 
+    /**
+     * Erstellt eine neue GameLoop.
+     * 
+     * @param panel das GamePanel, in dem die GameLoop läuft
+     */
     public GameLoop(final GamePanel panel) {
         this.gameThread = new Thread(this);
         this.gameThread.setName("Game Thread");
@@ -26,6 +50,11 @@ public class GameLoop implements Runnable {
         this.running = false;
     }
 
+    /**
+     * Startet die GameLoop.
+     * 
+     * @param state der aktive GameState
+     */
     public void start(final GameState state) {
         this.activeState = state;
 
@@ -33,14 +62,23 @@ public class GameLoop implements Runnable {
         running = true;
     }
 
+    /**
+     * Pausiert die GameLoop.
+     */
     public void pause() {
         running = false;
     }
 
+    /**
+     * Setzt die GameLoop fort.
+     */
     public void resume() {
         running = true;
     }
 
+    /**
+     * Run-Methode der GameLoop. Funktioniert nach dem Deltazeit-Prinzip.
+     */
     @Override
     public void run() { // Delta-Methode
         // Anzahl der Ticks und Frames pro Sekunde
@@ -94,10 +132,16 @@ public class GameLoop implements Runnable {
         } while (running);
     }
 
+    /**
+     * Führt einen Tick aus.
+     */
     private void doTick() {
         activeState.tick();
     }
 
+    /**
+     * Führt eine Bildschirmaktualisierung aus.
+     */
     private void doRender() {
         panel.repaint();
     }

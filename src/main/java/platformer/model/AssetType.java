@@ -2,18 +2,18 @@ package platformer.model;
 
 import platformer.util.Identifiable;
 
+/**
+ * Ein AssetType ist ein Typ eines Assets.
+ * 
+ * @author Jamil B.
+ */
 public enum AssetType implements Identifiable {
 
     ENTITY(0),
-
     ITEM(1),
-
     TILE(2),
-
     ANIMATION(3),
-
     SPRITESHEET(4),
-
     LEVEL(5),
 
     ;

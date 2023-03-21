@@ -4,6 +4,11 @@ import platformer.model.ResourceKey;
 import platformer.model.animation.Animation;
 import platformer.util.Identifiable;
 
+/**
+ * Eine Aufzählung, welche alle möglichen Typen von Spritesheets enthält.
+ * 
+ * @author Jamil B.
+ */
 public enum SpritesheetType implements Identifiable {
     
     ENTITY(0, "Entity"),

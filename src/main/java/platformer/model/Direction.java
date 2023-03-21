@@ -3,7 +3,10 @@ package platformer.model;
 import platformer.model.animation.Animation;
 import platformer.util.Identifiable;
 
-public  enum Direction implements Identifiable {
+/**
+ * EIne Direction ist eine Richtung.
+ */
+public enum Direction implements Identifiable {
     LEFT(0, "Links"),
     RIGHT(1, "Rechts"),
     UP(2, "Hoch"),

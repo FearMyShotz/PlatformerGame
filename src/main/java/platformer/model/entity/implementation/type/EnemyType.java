@@ -5,6 +5,13 @@ import platformer.model.entity.Entity;
 import platformer.model.entity.EntityType;
 import platformer.util.Identifiable;
 
+/**
+ * Eine Aufzählung, die die verschiedenen Gegnertypen enthält.
+ * 
+ * @author Jamil B.
+ * @see Identifiable
+ * @see EntityType
+ */
 public enum EnemyType implements EntityType, Identifiable {
     
     SKELETON(50, "Skelett"),
@@ -40,6 +47,4 @@ public enum EnemyType implements EntityType, Identifiable {
     public GeneralEntityType getType() {
         return GeneralEntityType.NPC;
     }
-
-    
 }

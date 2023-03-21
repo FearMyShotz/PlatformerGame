@@ -10,14 +10,37 @@ import platformer.model.entity.implementation.type.GeneralEntityType;
 import platformer.model.spritesheet.Spritesheet;
 import platformer.model.spritesheet.loader.SpritesheetLoader;
 
+/**
+ * Eine spezialisierte {@link SpritesheetLoader}-Implementierung, die für das Laden von Entity-Animationen verwendet wird.
+ * 
+ * @author Jamil B.
+ * @see Animation
+ * @see SpritesheetLoader
+ */
 public class EntityAnimationLoader extends SpritesheetLoader<Animation> {
 
+    /**
+     * Die Animationen, die geladen werden sollen.
+     */
     Animation idle, walk, hit, jump, attack, death;
 
+    /**
+     * Erstellt einen neuen EntityAnimationLoader.
+     * 
+     * @param sheet Das Spritesheet, die für das Laden der Animationen verwendet werden soll.
+     * @param fileName Der Name der Datei, die für das Laden der Animationen verwendet werden soll.
+     */
     public EntityAnimationLoader(Spritesheet sheet, String fileName) {
         super(new HashSet<Animation>(), sheet, fileName);
     }
 
+    /**
+     * Lädt die Animationen, die für die Entity geladen werden sollen.
+     * 
+     * Führt @see {@link #load(String[])} aus.
+     * 
+     * @return Die Animationen, die für die Entity geladen werden sollen.
+     */
     @Override
     public HashSet<Animation> load() {
         return switch (fileName) {
@@ -31,6 +54,14 @@ public class EntityAnimationLoader extends SpritesheetLoader<Animation> {
         };
     }
 
+    /**
+     * Lädt die Animationen, die für die Entity geladen werden sollen.
+     * 
+     * Ruft die entsprechende Builder-Methode für jede Animation auf.
+     * 
+     * @param entityOptions Die Optionen, die für das Laden der Animationen verwendet werden sollen.
+     * @return Die Animationen, die für die Entity geladen werden sollen.
+     */
     public HashSet<Animation> load(String[] entityOptions) {
         String entityName = entityOptions[0], direction = entityOptions[1];
 

@@ -7,6 +7,13 @@ import platformer.model.entity.Entity;
 import platformer.model.tile.type.TileType;
 import platformer.util.Identifiable;
 
+/**
+ * Eine Aufzählung, die die verschiedenen Entitytypen enthält.
+ * 
+ * @author Jamil B.
+ * @see Identifiable
+ * @see Entity
+ */
 public enum GeneralEntityType implements Identifiable {
     
     PLAYER(0, "Spieler", "player"),

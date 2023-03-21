@@ -5,6 +5,10 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 /**
+ * Der standardmäßige MouseListener.
+ * 
+ * Wird nicht verwendet. (Stand: 21.03.2023)
+ * 
  * @author Jamil B.
  */
 public class DefaultMouseListener implements MouseListener, MouseMotionListener {

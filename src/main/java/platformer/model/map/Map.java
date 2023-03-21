@@ -20,16 +20,33 @@ import platformer.tick.Rendering;
 import platformer.util.Location;
 import platformer.window.GameWindow;
 
+/**
+ * Ein {@link GameAsset}, das eine Map darstellt.
+ * 
+ * @author Jamil B.
+ */
 public class Map extends GameAsset implements Rendering {
 
+    /**
+     * Der MapLoader, der die Map lädt.
+     */
     private final MapLoader loader;
 
+    /**
+     * Die Tiles in einem zweidimensionalen Array.
+     */
     private Tile[][] tiles;
 
+    /**
+     * Die Liste der Wolken.
+     */
     private final ArrayList<Cloud> clouds;
 
-    // private BufferedImage backgroundImage;
-
+    /**
+     * Erstellt eine neue Map.
+     * @param manager der TileManager, der die Tiles verwaltet.
+     * @param filePath der Pfad zur Datei, die geladen werden soll.
+     */
     public Map(TileManager manager, String filePath) {
         super(0, "Map", "map", "map");
 
@@ -41,21 +58,13 @@ public class Map extends GameAsset implements Rendering {
 
         this.clouds = new ArrayList<Cloud>();
 
-        // setBackgroundImage();
         loadClouds();
     }
 
-    // private void setBackgroundImage() {
-    //     try {
-    //         // this.backgroundImage = ImageIO.read(getClass().getResourceAsStream("/background" + number + ".png"));
-    //         this.backgroundImage = ImageIO.read(getClass().getResourceAsStream("/clouds" + ".png"));
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
-    // }
-
+    /**
+     * Lädt die Wolken mit zufälligen Positionen.
+     */
     public void loadClouds() {
-        // Spawn clouds at random positions between 0 and GameWindow.WIDTH and 0 and GameWindow.HEIGHT - 600
         for (int i = 1; i < 7; i++) {
             int x = (int) (Math.random() * (GameWindow.WIDTH - 100));
             int y = (int) (Math.random() * (GameWindow.HEIGHT - 600));
@@ -86,17 +95,30 @@ public class Map extends GameAsset implements Rendering {
         }
     }
 
+    /**
+     * Rendert den Hintergrund.
+     * 
+     * @param g das Graphics-Objekt, mit dem gerendert wird.
+     */
     public void renderBackground(Graphics g) {
         g.setColor(new Color(15, 135, 255));
         g.fillRect(0, 0, GameWindow.WIDTH, GameWindow.HEIGHT);
-
-        // g.drawImage(backgroundImage, 0, 0, GameWindow.WIDTH, GameWindow.HEIGHT, null);
     }
 
+    /**
+     * Rendert die Wolken.
+     * 
+     * @param g das Graphics-Objekt, mit dem gerendert wird.
+     */
     public void renderClouds(Graphics g) {
         clouds.stream().forEach(cloud -> cloud.render(g));
     }
 
+    /**
+     * Rendert die Map an sich.
+     * 
+     * @param g das Graphics-Objekt, mit dem gerendert wird.
+     */
     @Override
     public void render(Graphics g) {
         renderBackground(g);
@@ -115,26 +137,61 @@ public class Map extends GameAsset implements Rendering {
         }
     }
 
+    /**
+     * Gibt die Breite der Map zurück.
+     * 
+     * @return die Breite der Map.
+     */
     public int getWidth() {
         return tiles[0].length;
     }
 
+    /**
+     * Gibt die Höhe der Map zurück.
+     * 
+     * @return die Höhe der Map.
+     */
     public int getHeight() {
         return tiles.length;
     }
 
+    /**
+     * Gibt die Tiles der Map in einem zweidimensionalen Array zurück.
+     * 
+     * @return die Tiles der Map.
+     */
     public Tile[][] getTiles() {
         return tiles;
     }
 
+    /**
+     * Gibt die Tile an der angegebenen Position zurück.
+     * 
+     * @param x die X-Koordinate der Position.
+     * @param y die Y-Koordinate der Position.
+     * @return die Tile an der angegebenen Position.
+     */
     public Tile getTile(int x, int y) {
         return tiles[y][x];
     }
 
+    /**
+     * Gibt die Tile an der angegebenen Position zurück.
+     * 
+     * @param x die X-Koordinate der Position.
+     * @param y die Y-Koordinate der Position.
+     * @return die Tile an der angegebenen Position.
+     */
     public Tile getTile(double x, double y) {
         return tiles[(int) y][(int) x];
     }
 
+    /**
+     * Gibt die Tile an der angegebenen Position zurück.
+     * 
+     * @param location die Position.
+     * @return die Tile an der angegebenen Position.
+     */
     public Tile getTile(Location location) {
         return tiles[(int) location.getY()][(int) location.getX()];
     }
