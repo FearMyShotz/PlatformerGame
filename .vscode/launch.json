@@ -1,0 +1,35 @@
+{
+    // Verwendet IntelliSense zum Ermitteln möglicher Attribute.
+    // Zeigen Sie auf vorhandene Attribute, um die zugehörigen Beschreibungen anzuzeigen.
+    // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "MorseDecoder",
+            "request": "launch",
+            "mainClass": "platformer.MorseDecoder",
+            "projectName": "platformer"
+        },
+        {
+            "type": "java",
+            "name": "Morsetest",
+            "request": "launch",
+            "mainClass": "platformer.Morsetest",
+            "projectName": "platformer"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "platformer.main.Main",
+            "projectName": "platformer"
+        }
+    ]
+}
