@@ -12,7 +12,7 @@ public class GameWindow {
     /**
      * Die Skalierungsfaktor des Spiels.
      */
-    public static final float SCALE = 2f;
+    public static final float SCALE = 1f;
 
     /**
      * Die Standardgröße eines Tiles.
